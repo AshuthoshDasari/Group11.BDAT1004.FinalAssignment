@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet">  
+   
+<title>Covid-19 Live Data</title>
+
+
+  <title>Home</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawBasic);
+    function drawBasic() {
+          var data = google.visualization.arrayToDataTable([
+        ['Countries', 'Total Confirmed cases',],['USA', 80449944],['India', 43036928],
+        ['Turkey', 27162463],['France', 22878428],['Germany', 17745453]
+      ]);
+          var options = {
+            title: 'Total confirmed cases among countries',
+            chartArea: {width: '50%'},
+            hAxis: {
+              title: 'Total Population',
+              minValue: 0
+            },
+            vAxis: {
+              title: 'City'
+            }
+          };
+          var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+          chart.draw(data, options);
+        }
+  </script>
+</head>
+<body>
+       <div class="topnav" id="myTopnav">
+  <a href="/" class="active">Global Coronavirus Stats Dashboard</a>
+  <a href="/"> Countries</a>
+  <a href="/">About Us</a>
+    <a href="/">Contact Us</a>
+
+  <div id="chart_div" class="chart"></div>
+
+
+</div>
+
+    <div class="banner">
+        <h1>Coronavirus Global Stats</h1>
+
+    </div>
+    <br>
+    
+   <br>
+    <div class="leftpane">
+
+      <h4>New Deaths </h4>
+<h4>
+  {{nd_n}}
+</h4><br>
+         <h4>New Cases </h4>
+<h4>
+  {{nc_n}}
+</h4><br>
+        <h4>New Recovered </h4>
+<h4> {{nr_n}} </h4>
+                 <br>
+    <div class="banner2">
+
+</div>
+</div>
+    
+    <div class="rightpane">
+        <h4>Total Deaths </h4>
+<h4>
+  {{td_n}}
+</h4><br>
+         <h4>Total Cases </h4>
+<h4>
+  {{tc_n}}
+</h4><br>
+         <h4>Total Reecoverd </h4>
+<h4>
+  {{tr_n}}
+</h4><br>
+<div class="banner2">
+
+</div>
+</div>
+<div>
+  <h3 style="background-color:lightblue">Updated On: {{date}} </h3> 
+</div>
+    
+</body>
+</html>
